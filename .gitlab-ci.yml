@@ -1,0 +1,3 @@
+include:
+  project: gitlab-classrooms/autograding
+  file: maven-junit.yml
