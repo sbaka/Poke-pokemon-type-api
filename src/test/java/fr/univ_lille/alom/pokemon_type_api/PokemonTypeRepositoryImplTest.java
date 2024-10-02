@@ -60,7 +60,6 @@ class PokemonTypeRepositoryImplTest {
             assertNotNull(repoByName);
             assertNotNull(repoByClass);
         } catch (BeansException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

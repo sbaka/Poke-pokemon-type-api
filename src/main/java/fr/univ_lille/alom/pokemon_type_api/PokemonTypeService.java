@@ -6,4 +6,6 @@ public interface PokemonTypeService {
     PokemonType getPokemonType(int id);
 
     List<PokemonType> getAllPokemonTypes();
+
+    PokemonType getPokemonTypeByName(String name);
 }
