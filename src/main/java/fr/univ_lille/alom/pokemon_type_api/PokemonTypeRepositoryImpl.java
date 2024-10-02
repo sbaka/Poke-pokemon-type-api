@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -17,7 +18,7 @@ class PokemonTypeRepositoryImpl implements PokemonTypeRepository {
 
     PokemonTypeRepositoryImpl() {
         try {
-            var pokemonsStream = this.getClass().getResourceAsStream("/pokemons.json");
+            var pokemonsStream = new ClassPathResource("pokemons.json").getInputStream();
 
             var objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -41,7 +42,7 @@ class PokemonTypeRepositoryImpl implements PokemonTypeRepository {
     public PokemonType findPokemonTypeByName(String name) {
         System.out.println("Loading Pokemon information for Pokemon name " + name);
         Optional<PokemonType> pokemon = pokemons.stream()
-                .filter(p -> p.name().equalsIgnoreCase(name))
+                .filter(p -> p.name().equals(name))
                 .findFirst();
         return pokemon.orElse(null);
     }
