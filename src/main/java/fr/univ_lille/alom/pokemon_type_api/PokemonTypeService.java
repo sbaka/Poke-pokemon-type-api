@@ -8,4 +8,12 @@ public interface PokemonTypeService {
     List<PokemonType> getAllPokemonTypes();
 
     PokemonType getPokemonTypeByName(String name);
+
+    List<PokemonType> getPokemonTypesByTypes(String[] split);
+
+    List<PokemonType> getAllPokemonTypesSorted(String orderBy);
+
+    void setTranslationRepository(TranslationRepository translationRepository);
+
+    void setPokemonTypeRepository(PokemonTypeRepository pokemonTypeRepository);
 }

@@ -51,4 +51,29 @@ class PokemonTypeRepositoryImpl implements PokemonTypeRepository {
     public List<PokemonType> findAllPokemonTypes() {
         return pokemons;
     }
+
+    @Override
+    public List<PokemonType> findPokemonTypesByTypes(String[] types) {
+        System.out.println("Loading Pokemon information for Pokemon types " + Arrays.toString(types));
+        return pokemons.stream()
+                .filter(p -> Arrays.asList(types).containsAll(p.types()))
+                .toList();
+    }
+
+    @Override
+    public List<PokemonType> findAllPokemonTypesSorted(String orderBy) {
+        System.out.println("Loading Pokemon information for Pokemon sorted by " + orderBy);
+        return pokemons.stream()
+                .sorted((p1, p2) -> {
+                    switch (orderBy) {
+                        case "id":
+                            return Integer.compare(p1.id(), p2.id());
+                        case "name":
+                            return p1.name().compareTo(p2.name());
+                        default:
+                            return 0;
+                    }
+                })
+                .toList();
+    }
 }

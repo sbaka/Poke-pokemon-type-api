@@ -8,4 +8,8 @@ interface PokemonTypeRepository {
     PokemonType findPokemonTypeByName(String name);
 
     List<PokemonType> findAllPokemonTypes();
+
+    List<PokemonType> findPokemonTypesByTypes(String[] types);
+
+    List<PokemonType> findAllPokemonTypesSorted(String orderBy);
 }

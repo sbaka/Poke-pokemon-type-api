@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Application<pokemon-type-api>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "fr.univ_lille.alom.pokemon_type_api.Application",
+      "projectName": "pokemon-type-api",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
