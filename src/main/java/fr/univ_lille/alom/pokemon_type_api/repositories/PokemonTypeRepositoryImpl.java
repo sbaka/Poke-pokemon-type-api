@@ -1,4 +1,4 @@
-package fr.univ_lille.alom.pokemon_type_api;
+package fr.univ_lille.alom.pokemon_type_api.repositories;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -11,8 +11,10 @@ import org.springframework.stereotype.Repository;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import fr.univ_lille.alom.pokemon_type_api.model.PokemonType;
+
 @Repository
-class PokemonTypeRepositoryImpl implements PokemonTypeRepository {
+public class PokemonTypeRepositoryImpl implements PokemonTypeRepository {
 
     private List<PokemonType> pokemons;
 

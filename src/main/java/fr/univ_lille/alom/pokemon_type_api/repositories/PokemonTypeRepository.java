@@ -1,8 +1,9 @@
-package fr.univ_lille.alom.pokemon_type_api;
+package fr.univ_lille.alom.pokemon_type_api.repositories;
 
 import java.util.List;
+import fr.univ_lille.alom.pokemon_type_api.model.PokemonType;
 
-interface PokemonTypeRepository {
+public interface PokemonTypeRepository {
     PokemonType findPokemonTypeById(int id);
 
     PokemonType findPokemonTypeByName(String name);

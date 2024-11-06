@@ -1,4 +1,4 @@
-package fr.univ_lille.alom.pokemon_type_api;
+package fr.univ_lille.alom.pokemon_type_api.repositories;
 
 import java.util.Locale;
 

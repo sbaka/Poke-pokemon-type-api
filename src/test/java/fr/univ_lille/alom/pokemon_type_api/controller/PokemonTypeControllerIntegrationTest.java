@@ -1,4 +1,4 @@
-package fr.univ_lille.alom.pokemon_type_api;
+package fr.univ_lille.alom.pokemon_type_api.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -14,6 +14,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+
+import fr.univ_lille.alom.pokemon_type_api.model.PokemonType;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PokemonTypeControllerIntegrationTest {

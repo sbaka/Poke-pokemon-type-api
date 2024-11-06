@@ -1,4 +1,4 @@
-package fr.univ_lille.alom.pokemon_type_api;
+package fr.univ_lille.alom.pokemon_type_api.controller;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.univ_lille.alom.pokemon_type_api.model.PokemonType;
+import fr.univ_lille.alom.pokemon_type_api.services.PokemonTypeService;
+
 @RestController
 @RequestMapping("/pokemon-types")
-class PokemonTypeController {
+public class PokemonTypeController {
     private final PokemonTypeService pokemonTypeService;
 
     /**

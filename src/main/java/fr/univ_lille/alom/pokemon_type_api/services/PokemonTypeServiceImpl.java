@@ -1,14 +1,19 @@
-package fr.univ_lille.alom.pokemon_type_api;
+package fr.univ_lille.alom.pokemon_type_api.services;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import org.springframework.stereotype.Service;
+
+import fr.univ_lille.alom.pokemon_type_api.model.PokemonType;
+import fr.univ_lille.alom.pokemon_type_api.repositories.PokemonTypeRepository;
+import fr.univ_lille.alom.pokemon_type_api.repositories.TranslationRepository;
+
 import org.springframework.context.i18n.LocaleContextHolder;
 
 @Service
-class PokemonTypeServiceImpl implements PokemonTypeService {
+public class PokemonTypeServiceImpl implements PokemonTypeService {
 
     public PokemonTypeRepository pokemonTypeRepository;
     public TranslationRepository translationRepository;

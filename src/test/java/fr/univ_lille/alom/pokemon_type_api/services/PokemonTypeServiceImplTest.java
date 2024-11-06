@@ -1,9 +1,13 @@
-package fr.univ_lille.alom.pokemon_type_api;
+package fr.univ_lille.alom.pokemon_type_api.services;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeansException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.i18n.LocaleContextHolder;
+
+import fr.univ_lille.alom.pokemon_type_api.model.PokemonType;
+import fr.univ_lille.alom.pokemon_type_api.repositories.PokemonTypeRepository;
+import fr.univ_lille.alom.pokemon_type_api.repositories.TranslationRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

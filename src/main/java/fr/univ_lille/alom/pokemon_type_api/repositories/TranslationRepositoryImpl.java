@@ -1,6 +1,9 @@
-package fr.univ_lille.alom.pokemon_type_api;
+package fr.univ_lille.alom.pokemon_type_api.repositories;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import fr.univ_lille.alom.pokemon_type_api.model.Translation;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
 
