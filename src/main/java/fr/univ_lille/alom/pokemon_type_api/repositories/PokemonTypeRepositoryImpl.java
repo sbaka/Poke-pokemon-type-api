@@ -20,20 +20,17 @@ public class PokemonTypeRepositoryImpl implements PokemonTypeRepository {
 
     PokemonTypeRepositoryImpl() {
         try {
-            var pokemonsStream = new ClassPathResource("pokemons.json").getInputStream();
-
-            var objectMapper = new ObjectMapper();
+            ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            var pokemonsArray = objectMapper.readValue(pokemonsStream, PokemonType[].class);
-            this.pokemons = Arrays.asList(pokemonsArray);
+            pokemons = Arrays.asList(objectMapper.readValue(new ClassPathResource("pokemons.json").getInputStream(),
+                    PokemonType[].class));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Cannot load pokemons", e);
         }
     }
 
     @Override
     public PokemonType findPokemonTypeById(int id) {
-        System.out.println("Loading Pokemon information for Pokemon id " + id);
         Optional<PokemonType> pokemon = pokemons.stream()
                 .filter(p -> p.id() == id)
                 .findFirst();

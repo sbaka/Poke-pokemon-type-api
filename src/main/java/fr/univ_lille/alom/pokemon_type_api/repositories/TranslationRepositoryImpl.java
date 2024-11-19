@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
+import java.util.HashMap;
 
 @Repository
 public class TranslationRepositoryImpl implements TranslationRepository {
@@ -17,14 +18,14 @@ public class TranslationRepositoryImpl implements TranslationRepository {
     record Key(Locale locale, int pokemonId) {
     }
 
-    private Map<Key, Translation> translations;
+    private Map<Key, Translation> translations = new HashMap<>();
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
     public TranslationRepositoryImpl() {
         try {
             loadTranslations("translations-en.json", Locale.ENGLISH);
-            loadTranslations("translations-fr.json", Locale.FRENCH);
+            loadTranslations("translations-fr.json", Locale.FRANCE);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,6 +45,10 @@ public class TranslationRepositoryImpl implements TranslationRepository {
     public String getPokemonName(int id, Locale locale) {
         var key = new Key(locale, id);
         var translation = translations.get(key);
-        return translation != null ? translation.name() : null;
+        if (translation == null) {
+            throw new IllegalArgumentException("No translation found for pokemon " + id + " in locale " + locale);
+        }
+        return translation.name();
+
     }
 }

@@ -23,7 +23,12 @@ class PokemonTypeServiceImplTest {
     @Test
     void pokemonTypeRepository_shouldBeCalled_whenFindById() {
         var pokemonTypeRepository = mock(PokemonTypeRepository.class);
-        var pokemonTypeService = new PokemonTypeServiceImpl(pokemonTypeRepository);
+        var pokemonTypeRepositoryTranslation = mock(TranslationRepository.class);
+        var pokemonTypeService = new PokemonTypeServiceImpl();
+        pokemonTypeService.setTranslationRepository(pokemonTypeRepositoryTranslation);
+        pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
+
+        when(pokemonTypeRepository.findPokemonTypeById(25)).thenReturn(new PokemonType(25, "Pikachu", null, null));
 
         pokemonTypeService.getPokemonType(25);
 
@@ -33,8 +38,9 @@ class PokemonTypeServiceImplTest {
     @Test
     void pokemonTypeRepository_shouldBeCalled_whenFindAll() {
         var pokemonTypeRepository = mock(PokemonTypeRepository.class);
-        var pokemonTypeService = new PokemonTypeServiceImpl(pokemonTypeRepository);
-
+        var pokemonTypeService = new PokemonTypeServiceImpl();
+        pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
+        pokemonTypeService.setTranslationRepository(mock(TranslationRepository.class));
         pokemonTypeService.getAllPokemonTypes();
 
         verify(pokemonTypeRepository).findAllPokemonTypes();
@@ -68,13 +74,15 @@ class PokemonTypeServiceImplTest {
     @Test
     void pokemonNames_shouldBeTranslated_usingLocaleResolver() {
         var pokemonTypeRepository = mock(PokemonTypeRepository.class);
+        var translationRepository = mock(TranslationRepository.class);
 
-        var pokemonTypeService = new PokemonTypeServiceImpl(pokemonTypeRepository);
+        var pokemonTypeService = new PokemonTypeServiceImpl();
+        pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
+        pokemonTypeService.setTranslationRepository(translationRepository);
 
         pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
         when(pokemonTypeRepository.findPokemonTypeById(25)).thenReturn(new PokemonType(25, "Toto", null, null));
 
-        var translationRepository = mock(TranslationRepository.class);
         pokemonTypeService.setTranslationRepository(translationRepository);
         when(translationRepository.getPokemonName(25, Locale.FRENCH)).thenReturn("Pikachu-FRENCH");
 
@@ -89,8 +97,9 @@ class PokemonTypeServiceImplTest {
     @Test
     void allPokemonNames_shouldBeTranslated_usingLocaleResolver() {
         var pokemonTypeRepository = mock(PokemonTypeRepository.class);
-        var pokemonTypeService = new PokemonTypeServiceImpl(pokemonTypeRepository);
+        var pokemonTypeService = new PokemonTypeServiceImpl();
 
+        pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
         pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
 
         var pikachu = new PokemonType(25, null, null, null);
