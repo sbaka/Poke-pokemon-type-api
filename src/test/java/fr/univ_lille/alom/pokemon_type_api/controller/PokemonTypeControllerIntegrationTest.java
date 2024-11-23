@@ -42,7 +42,7 @@ class PokemonTypeControllerIntegrationTest {
 
         assertNotNull(pikachu);
         assertEquals(25, pikachu.id());
-        assertEquals("pikachu", pikachu.name());
+        assertEquals("Pikachu", pikachu.name());
     }
 
     @Test
