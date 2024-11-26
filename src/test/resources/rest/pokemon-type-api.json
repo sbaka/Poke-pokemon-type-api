@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "4727406f-0878-4905-b8bc-ac0a2ce92019",
+		"name": "pokemon-type",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20506768"
+	},
+	"item": [
+		{
+			"name": "GET http://localhost:8080/pokemon-types/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Bulbasaur\", function () {",
+							"    var bulbasaur = pm.response.json();",
+							"    pm.expect(bulbasaur.id).to.eq(1);",
+							"    pm.expect(bulbasaur.name).to.eq(\"Bulbasaur\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"name": "cache-control",
+						"type": "text"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "<calculated when request is sent>",
+						"name": "postman-token",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "<calculated when request is sent>",
+						"name": "host",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "PostmanRuntime/7.39.1",
+						"name": "user-agent",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"name": "accept",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"name": "accept-encoding",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"name": "connection",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "fr",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/pokemon-types/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"pokemon-types",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET http://localhost:8080/pokemon-types/1 - Accept-Language: fr",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Bulbasaur\", function () {",
+							"    var bulbasaur = pm.response.json();",
+							"    pm.expect(bulbasaur.id).to.eq(1);",
+							"    pm.expect(bulbasaur.name).to.eq(\"Bulbizarre\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pokemon-types/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pokemon-types",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET http://localhost:8080/pokemon-types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"",
+							"pm.test(\"all pokemon types\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eq(151);",
+							"});",
+							"",
+							"pm.test(\"Bulbasaur\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].name).to.eq(\"Bulbasaur\");",
+							"});",
+							"",
+							"pm.test(\"Ivysaur\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[1].name).to.eq(\"Ivysaur\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pokemon-types/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pokemon-types",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET http://localhost:8080/pokemon-types - Accept-Language: fr",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"",
+							"pm.test(\"all pokemon types\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eq(151);",
+							"});",
+							"",
+							"pm.test(\"bulbizarre\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].name).to.eq(\"Bulbizarre\");",
+							"});",
+							"",
+							"pm.test(\"Herbizarre\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[1].name).to.eq(\"Herbizarre\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=345EEA0031305BD1FF5F09E015D2720D",
+						"name": "cookie",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"name": "cache-control",
+						"type": "text"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "<calculated when request is sent>",
+						"name": "postman-token",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "<calculated when request is sent>",
+						"name": "host",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "PostmanRuntime/7.39.1",
+						"name": "user-agent",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"name": "accept",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"name": "accept-encoding",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"name": "connection",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "fr",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/pokemon-types/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pokemon-types",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "user",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "1673b02f-23e6-4d54-81da-f721bfc2d562",
+				"type": "string"
+			}
+		]
+	}
+}

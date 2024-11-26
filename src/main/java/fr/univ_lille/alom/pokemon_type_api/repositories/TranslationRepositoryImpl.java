@@ -62,4 +62,5 @@ public class TranslationRepositoryImpl implements TranslationRepository {
         }
         return translation.name();
     }
+
 }
