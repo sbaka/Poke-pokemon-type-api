@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "4727406f-0878-4905-b8bc-ac0a2ce92019",
 		"name": "pokemon-type",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "20506768"
 	},
 	"item": [
@@ -76,21 +76,7 @@
 						"type": "text"
 					}
 				],
-				"url": {
-					"raw": "http://127.0.0.1:8080/pokemon-types/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"pokemon-types",
-						""
-					]
-				}
+				"url": "http://127.0.0.1:8080/pokemon-types/"
 			},
 			"response": []
 		},
@@ -111,25 +97,21 @@
 							"",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
 			"request": {
 				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/pokemon-types/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"pokemon-types",
-						""
-					]
-				}
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "fr",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8080/pokemon-types/"
 			},
 			"response": []
 		},
@@ -166,18 +148,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/pokemon-types/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"pokemon-types",
-						""
-					]
-				}
+				"url": "http://localhost:8080/pokemon-types/"
 			},
 			"response": []
 		},
@@ -268,35 +239,16 @@
 						"type": "text"
 					}
 				],
-				"url": {
-					"raw": "http://localhost:8080/pokemon-types/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"pokemon-types",
-						""
-					]
-				}
+				"url": "http://localhost:8080/pokemon-types/"
 			},
 			"response": []
 		}
 	],
 	"auth": {
 		"type": "basic",
-		"basic": [
-			{
-				"key": "username",
-				"value": "user",
-				"type": "string"
-			},
-			{
-				"key": "password",
-				"value": "1673b02f-23e6-4d54-81da-f721bfc2d562",
-				"type": "string"
-			}
-		]
+		"basic": {
+			"username": "user",
+			"password": "1673b02f-23e6-4d54-81da-f721bfc2d562"
+		}
 	}
 }
