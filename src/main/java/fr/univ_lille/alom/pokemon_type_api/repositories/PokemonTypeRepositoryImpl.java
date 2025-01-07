@@ -39,7 +39,6 @@ public class PokemonTypeRepositoryImpl implements PokemonTypeRepository {
 
     @Override
     public PokemonType findPokemonTypeByName(String name) {
-        System.out.println("Loading Pokemon information for Pokemon name " + name);
         Optional<PokemonType> pokemon = pokemons.stream()
                 .filter(p -> p.name().equals(name))
                 .findFirst();
@@ -53,7 +52,6 @@ public class PokemonTypeRepositoryImpl implements PokemonTypeRepository {
 
     @Override
     public List<PokemonType> findPokemonTypesByTypes(String[] types) {
-        System.out.println("Loading Pokemon information for Pokemon types " + Arrays.toString(types));
         return pokemons.stream()
                 .filter(p -> Arrays.asList(types).containsAll(p.types()))
                 .toList();
@@ -61,7 +59,6 @@ public class PokemonTypeRepositoryImpl implements PokemonTypeRepository {
 
     @Override
     public List<PokemonType> findAllPokemonTypesSorted(String orderBy) {
-        System.out.println("Loading Pokemon information for Pokemon sorted by " + orderBy);
         return pokemons.stream()
                 .sorted((p1, p2) -> {
                     switch (orderBy) {

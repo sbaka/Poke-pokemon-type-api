@@ -6,6 +6,10 @@ public record PokemonType(
         int id,
         String name,
         Sprites sprites,
-        List<String> types) {
+        List<String> types,
+        int baseExperience,
+        int height,
+        int weight,
+        Stats stats) {
 
 }

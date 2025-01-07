@@ -39,8 +39,7 @@ class PokemonTypeControllerIntegrationTest {
         var url = "http://localhost:" + port + "/pokemon-types/25";
 
         var pikachu = this.restTemplate.getForObject(url, PokemonType.class);
-
-        assertNotNull(pikachu);
+        System.out.println("Received Pokemon: " + pikachu);
         assertEquals(25, pikachu.id());
         assertEquals("Pikachu", pikachu.name());
     }

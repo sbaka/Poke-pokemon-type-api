@@ -31,7 +31,8 @@ public class PokemonTypeServiceImpl implements PokemonTypeService {
         // }
         String translatedName = translationRepository.getPokemonName(id, locale);
 
-        PokemonType updatedPoke = new PokemonType(tempPoke.id(), translatedName, tempPoke.sprites(), tempPoke.types());
+        PokemonType updatedPoke = new PokemonType(tempPoke.id(), translatedName, tempPoke.sprites(), tempPoke.types(),
+                tempPoke.baseExperience(), tempPoke.height(), tempPoke.weight(), tempPoke.stats());
 
         return updatedPoke;
     }
@@ -44,8 +45,15 @@ public class PokemonTypeServiceImpl implements PokemonTypeService {
             try {
                 Locale locale = LocaleContextHolder.getLocale();
                 String translatedName = translationRepository.getPokemonName(pokemonType.id(), locale);
-                PokemonType updatedPoke = new PokemonType(pokemonType.id(), translatedName, pokemonType.sprites(),
-                        pokemonType.types());
+                PokemonType updatedPoke = new PokemonType(
+                        pokemonType.id(),
+                        translatedName,
+                        pokemonType.sprites(),
+                        pokemonType.types(),
+                        pokemonType.baseExperience(),
+                        pokemonType.height(),
+                        pokemonType.weight(),
+                        pokemonType.stats());
                 finalList.add(updatedPoke);
             } catch (IllegalArgumentException e) {
                 finalList.add(pokemonType);

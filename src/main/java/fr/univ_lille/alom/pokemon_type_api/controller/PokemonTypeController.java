@@ -15,9 +15,6 @@ import fr.univ_lille.alom.pokemon_type_api.services.PokemonTypeService;
 public class PokemonTypeController {
     private final PokemonTypeService pokemonTypeService;
 
-    /**
-     * @param pokemonTypeService
-     */
     PokemonTypeController(PokemonTypeService pokemonTypeService) {
         this.pokemonTypeService = pokemonTypeService;
     }
@@ -27,22 +24,24 @@ public class PokemonTypeController {
         return pokemonTypeService.getPokemonType(id);
     }
 
-    @GetMapping("/")
-    public List<PokemonType> getAllPokemonTypes() {
+    @GetMapping
+    public List<PokemonType> getAllPokemonTypes(
+            @RequestParam(required = false) String types,
+            @RequestParam(required = false) String orderBy) {
+        
+        if (types != null) {
+            String[] typeArray = types.split(",");
+            return pokemonTypeService.getPokemonTypesByTypes(typeArray);
+        }
+        
+        if (orderBy != null) {
+            return pokemonTypeService.getAllPokemonTypesSorted(orderBy);
+        }
+        
         return pokemonTypeService.getAllPokemonTypes();
     }
 
-    @GetMapping(value = "/", params = "types")
-    public List<PokemonType> getPokemonTypesByTypes(@RequestParam String types) {
-        return pokemonTypeService.getPokemonTypesByTypes(types.split(","));
-    }
-
-    @GetMapping(value = "/", params = "orderBy")
-    public List<PokemonType> getAllPokemonTypesSorted(@RequestParam String orderBy) {
-        return pokemonTypeService.getAllPokemonTypesSorted(orderBy);
-    }
-
-    @GetMapping(value = "/", params = "name")
+    @GetMapping(params = "name")
     public PokemonType getPokemonTypeFromName(@RequestParam String name) {
         return pokemonTypeService.getPokemonTypeByName(name);
     }

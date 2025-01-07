@@ -28,7 +28,7 @@ class PokemonTypeServiceImplTest {
         pokemonTypeService.setTranslationRepository(pokemonTypeRepositoryTranslation);
         pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
 
-        when(pokemonTypeRepository.findPokemonTypeById(25)).thenReturn(new PokemonType(25, "Pikachu", null, null));
+        when(pokemonTypeRepository.findPokemonTypeById(25)).thenReturn(new PokemonType(25, "Pikachu", null, null, 0, 0, 0, null));
 
         pokemonTypeService.getPokemonType(25);
 
@@ -81,7 +81,7 @@ class PokemonTypeServiceImplTest {
         pokemonTypeService.setTranslationRepository(translationRepository);
 
         pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
-        when(pokemonTypeRepository.findPokemonTypeById(25)).thenReturn(new PokemonType(25, "Toto", null, null));
+        when(pokemonTypeRepository.findPokemonTypeById(25)).thenReturn(new PokemonType(25, "Toto", null, null, 0, 0, 0, null));
 
         pokemonTypeService.setTranslationRepository(translationRepository);
         when(translationRepository.getPokemonName(25, Locale.FRENCH)).thenReturn("Pikachu-FRENCH");
@@ -102,8 +102,8 @@ class PokemonTypeServiceImplTest {
         pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
         pokemonTypeService.setPokemonTypeRepository(pokemonTypeRepository);
 
-        var pikachu = new PokemonType(25, null, null, null);
-        var raichu = new PokemonType(26, null, null, null);
+        var pikachu = new PokemonType(25, null, null, null, 0, 0, 0, null);
+        var raichu = new PokemonType(26, null, null, null, 0, 0, 0, null);
         when(pokemonTypeRepository.findAllPokemonTypes()).thenReturn(List.of(pikachu, raichu));
 
         // on simule le repository de traduction

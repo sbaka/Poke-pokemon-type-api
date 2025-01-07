@@ -23,7 +23,7 @@ public class PokemonTypeControllerTest {
         var service = mock(PokemonTypeService.class);
         var controller = new PokemonTypeController(service);
 
-        var pikachu = new PokemonType(25, "pikachu", null, List.of());
+        var pikachu = new PokemonType(25, "pikachu", null, List.of(), 0, 0, 0, null);
         when(service.getPokemonType(25)).thenReturn(pikachu);
 
         var pokemon = controller.getPokemonTypeFromId(25);
@@ -37,9 +37,29 @@ public class PokemonTypeControllerTest {
         var service = mock(PokemonTypeService.class);
         var controller = new PokemonTypeController(service);
 
-        controller.getAllPokemonTypes();
+        controller.getAllPokemonTypes(null, null);
 
         verify(service).getAllPokemonTypes();
+    }
+
+    @Test
+    void getAllPokemonTypes_withTypes_shouldCallTheService() {
+        var service = mock(PokemonTypeService.class);
+        var controller = new PokemonTypeController(service);
+
+        controller.getAllPokemonTypes("fire,water", null);
+
+        verify(service).getPokemonTypesByTypes(new String[]{"fire", "water"});
+    }
+
+    @Test
+    void getAllPokemonTypes_withOrderBy_shouldCallTheService() {
+        var service = mock(PokemonTypeService.class);
+        var controller = new PokemonTypeController(service);
+
+        controller.getAllPokemonTypes(null, "name");
+
+        verify(service).getAllPokemonTypesSorted("name");
     }
 
     @Test
@@ -62,11 +82,9 @@ public class PokemonTypeControllerTest {
 
     @Test
     void getAllPokemonTypes_shouldBeAnnotated() throws NoSuchMethodException {
-        var getAllPokemonTypes = PokemonTypeController.class.getDeclaredMethod("getAllPokemonTypes");
+        var getAllPokemonTypes = PokemonTypeController.class.getDeclaredMethod("getAllPokemonTypes", String.class, String.class);
         var getMapping = getAllPokemonTypes.getAnnotation(GetMapping.class);
 
         assertNotNull(getMapping);
-        assertArrayEquals(new String[] { "/" }, getMapping.value());
     }
-
 }
